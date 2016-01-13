@@ -100,6 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\PingController.cs" />
+    <Compile Include="ErrorHandling\OopsHandler.cs" />
+    <Compile Include="ErrorHandling\OopsResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
