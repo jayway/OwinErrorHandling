@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Formatting;
+﻿using System;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using Microsoft.Owin;
@@ -22,6 +23,10 @@ namespace OwinErrorHandling
             config.Services.Replace(typeof(IExceptionHandler), new OopsHandler());
 
             app
+                .Use((context, next) =>
+                {
+                    throw new Exception("oops!");
+                })
                 .UseWebApi(config);
         }
     }
