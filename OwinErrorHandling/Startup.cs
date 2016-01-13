@@ -20,9 +20,10 @@ namespace OwinErrorHandling
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());
 
-            config.Services.Replace(typeof(IExceptionHandler), new OopsHandler());
+            config.Services.Replace(typeof(IExceptionHandler), new PassthroughHandler());
 
             app
+                .Use<OopsHandlerMiddleware>()
                 .Use((context, next) =>
                 {
                     throw new Exception("oops!");
